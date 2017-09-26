@@ -10,21 +10,19 @@ describe('Page model', function() {
     describe('Virtuals', function() {
         let page;
         beforeEach(function() {
-            page = Page.build({urlTitle: 'superpage'});
-             
+            page = Page.build({urlTitle: 'superpage', content: 'This is a super boring paragraph...'});
+
         })
         describe('route', function() {
             it('returns the url_name prepended by "/wiki/"', function() {
-                expect(page.route).to.equal('/wiki/superpage')
+                expect(page.route).to.equal('/wiki/superpage');
             });
         });
         describe('renderedContent', function() {
             it('converts the markdown-formatted content into HTML', function() {
-
+                expect(page.renderedContent).to.equal('<p>This is a super boring paragraph...</p>\n');
             });
         });
-
-
     });
 
     describe('Class methods', function() {
